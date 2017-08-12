@@ -13,9 +13,11 @@ function TemplateData(){
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
+// Static Path
+app.use(express.static(path.join(__dirname, 'public')))
+
 // Server Config
 var port = process.env.PORT || 8080;
-
 
 // Home Route
 app.get("/", (request, response) => {
