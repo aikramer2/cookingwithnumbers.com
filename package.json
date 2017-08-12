@@ -1,0 +1,14 @@
+{
+  "name": "application",
+  "version": "1.0.0",
+  "description": "Personal Site for Aaron Kramer",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app"
+  },
+  "author": "Aaron Kramer",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
