@@ -1,8 +1,22 @@
 const express = require("express")
-const path = require("path")
+const path    = require("path")
+const hljs    = require('highlight.js');
+const mongoose = require('mongoose')
+
+mongoose.connect('mongodb://localhost/personal')
+let db = mongoose.connection
+
+//check connection
+db.once('open', () => {console.log("Connected to mongodb")})
+
+// Check for db errors
+db.on('error', (err) => {console.log(err)})
 
 // Init App
 const app = express()
+
+// Bring in Models
+let Article = require('./models/article')
 
 // Headers
 function TemplateData(){
@@ -25,6 +39,19 @@ app.get("/", (request, response) => {
   response.render("index", header)
 })
 
+// Home Route
+app.get("/papers-i-like", (request, response) => {
+  Article.find({}, (err, articles) => {
+    if(err){
+      console.log(err)
+    } else {
+
+      var data = new TemplateData()
+      data.articles = articles
+      response.render("papers-i-like", data)
+    }
+  })
+})
 
 // Start Server
 app.listen(port, () => {
