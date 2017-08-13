@@ -3,7 +3,7 @@ const path    = require("path")
 const hljs    = require('highlight.js');
 const mongoose = require('mongoose')
 
-var mongo_uri = process.env.MONGODB_URI || 'mongodb://localhost/personal'
+var mongo_uri = process.env.PROD_MONGODB || 'mongodb://localhost/personal'
 
 mongoose.connect(mongo_uri)
 let db = mongoose.connection
