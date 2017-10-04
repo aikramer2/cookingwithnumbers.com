@@ -13,6 +13,10 @@ let articleSchema = mongoose.Schema({
     type: String,
     required: false,
   },
+  comments:{
+    type: Array,
+    required: false,
+  }
 
 })
 
